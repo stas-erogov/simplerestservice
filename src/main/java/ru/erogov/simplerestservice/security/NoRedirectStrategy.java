@@ -8,6 +8,8 @@ import java.io.IOException;
 
 class NoRedirectStrategy implements RedirectStrategy {
     @Override
-    public void sendRedirect(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, String s) throws IOException {
+    public void sendRedirect(final HttpServletRequest httpServletRequest,
+                             final HttpServletResponse httpServletResponse,
+                             final String s) throws IOException {
     }
 }

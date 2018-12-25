@@ -10,7 +10,7 @@ import java.util.Collection;
 
 import static java.util.Objects.requireNonNull;
 
-public class User implements UserDetails {
+public final class User implements UserDetails {
     private static final Long serialVersionUID = 1L;
     private static final UserBuilder UserBuilder = new UserBuilder();
 
@@ -20,7 +20,7 @@ public class User implements UserDetails {
 
     private User(@JsonProperty("id") final String id,
                  @JsonProperty("name") final String name,
-                 @JsonProperty("password") String password) {
+                 @JsonProperty("password") final String password) {
         super();
         this.id = requireNonNull(id);
         this.username = requireNonNull(name);
@@ -80,17 +80,17 @@ public class User implements UserDetails {
         private String username;
         private String password;
 
-        public UserBuilder id(String id) {
+        public UserBuilder id(final String id) {
             this.id = id;
             return this;
         }
 
-        public UserBuilder username(String username) {
+        public UserBuilder username(final String username) {
             this.username = username;
             return this;
         }
 
-        public UserBuilder password(String password) {
+        public UserBuilder password(final String password) {
             this.password = password;
             return this;
         }

@@ -29,13 +29,13 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
     static final RequestMatcher PROTECTED_URLS = new NegatedRequestMatcher(PUBLIC_URLS);
     private final TokenAuthenticationProvider provider;
 
-    SecurityConfig(TokenAuthenticationProvider provider) {
+    SecurityConfig(final TokenAuthenticationProvider provider) {
         super();
         this.provider = requireNonNull(provider);
     }
 
     @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+    protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(provider);
     }
 
@@ -45,7 +45,7 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    protected void configure(HttpSecurity http) throws Exception {
+    protected void configure(final HttpSecurity http) throws Exception {
         http.sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()

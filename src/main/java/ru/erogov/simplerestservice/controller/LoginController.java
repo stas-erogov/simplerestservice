@@ -14,7 +14,7 @@ class LoginController {
 
     private final UserAuthenticationService userAuthenticationService;
 
-    public LoginController(UserAuthenticationService userAuthenticationService) {
+    public LoginController(final UserAuthenticationService userAuthenticationService) {
         this.userAuthenticationService = userAuthenticationService;
     }
 

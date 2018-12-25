@@ -19,7 +19,7 @@ public class TradeMark {
     private TradeMark() {
     }
 
-    public TradeMark(String tradeMarkName) {
+    public TradeMark(final String tradeMarkName) {
         this.tradeMarkName = tradeMarkName;
     }
 

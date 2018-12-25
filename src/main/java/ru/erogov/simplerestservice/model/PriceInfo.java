@@ -36,7 +36,12 @@ public class PriceInfo {
     private PriceInfo() {
     }
 
-    public PriceInfo(BigDecimal price, int qty, int deliveryTerm, int multiplicity, String city, String offerKey, Article article) {
+    public PriceInfo(final BigDecimal price,
+                     final int qty, int deliveryTerm,
+                     final int multiplicity,
+                     final String city,
+                     final String offerKey,
+                     final Article article) {
         this.price = price;
         this.qty = qty;
         this.deliveryTerm = deliveryTerm;

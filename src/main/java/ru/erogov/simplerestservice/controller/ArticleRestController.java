@@ -21,24 +21,27 @@ class ArticleRestController {
     private final PriceInfoRepository priceInfoRepository;
 
     @Autowired
-    public ArticleRestController(ArticleReporitory articleReporitory, PriceInfoRepository priceInfoRepository, TradeMarkRepository tradeMarkRepository, UserAuthenticationService userAuthenticationService) {
+    public ArticleRestController(final ArticleReporitory articleReporitory,
+                                 final PriceInfoRepository priceInfoRepository,
+                                 final TradeMarkRepository tradeMarkRepository,
+                                 final UserAuthenticationService userAuthenticationService) {
         this.articleReporitory = articleReporitory;
         this.priceInfoRepository = priceInfoRepository;
     }
 
     @RequestMapping(value = "/{articleCode}", method = RequestMethod.GET)
-    Collection<PriceInfo> readPriceInfos(@PathVariable String articleCode) {
+    Collection<PriceInfo> readPriceInfos(@PathVariable final String articleCode) {
         this.validateArticleCode(articleCode);
         return priceInfoRepository.findByArticleArticleCode(articleCode);
     }
 
-    private void validateArticleCode(String articleCode) {
+    private void validateArticleCode(final String articleCode) {
         this.articleReporitory.findByArticleCode(articleCode)
                 .orElseThrow(()->new ArticleNotFoudException(articleCode));
     }
 
     private class ArticleNotFoudException extends RuntimeException {
-        public ArticleNotFoudException(String articleCode) {
+        public ArticleNotFoudException(final String articleCode) {
             super("Could not found article with code: " + articleCode);
         }
     }

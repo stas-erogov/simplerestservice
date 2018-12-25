@@ -30,7 +30,10 @@ public class Article {
     private Article() {
     }
 
-    public Article(String articleCode, String description, boolean isAnalog, TradeMark tradeMark) {
+    public Article(final String articleCode,
+                   final String description,
+                   final boolean isAnalog,
+                   final TradeMark tradeMark) {
         this.articleCode = articleCode;
         this.description = description;
         this.isAnalog = isAnalog;

@@ -26,12 +26,12 @@ public class SimpleUserAuthenticationServiceImpl implements UserAuthenticationSe
     }
 
     @Override
-    public Optional<User> findByToken(String token) {
+    public Optional<User> findByToken(final String token) {
         return Optional.ofNullable(users.get(token));
     }
 
     @Override
-    public void logout(User user) {
+    public void logout(final User user) {
         users.remove(user.getId());
     }
 }

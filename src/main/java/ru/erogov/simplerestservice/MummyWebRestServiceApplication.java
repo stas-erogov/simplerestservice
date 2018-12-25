@@ -18,7 +18,7 @@ import java.util.Arrays;
 public class MummyWebRestServiceApplication {
 
 	@Bean
-    CommandLineRunner init(TradeMarkRepository tradeMarkRepository, ArticleReporitory articleReporitory, PriceInfoRepository priceInfoRepository) {
+    CommandLineRunner init(final TradeMarkRepository tradeMarkRepository, final ArticleReporitory articleReporitory, final PriceInfoRepository priceInfoRepository) {
         final int[] i = {1};
 	    return (evt) -> Arrays.asList("schob,byk,gav,mg".split(","))
                 .forEach(tm -> {
@@ -31,7 +31,7 @@ public class MummyWebRestServiceApplication {
                 });
     }
 
-	public static void main(String[] args) {
+	public static void main(final String[] args) {
 		SpringApplication.run(MummyWebRestServiceApplication.class, args);
 	}
 }

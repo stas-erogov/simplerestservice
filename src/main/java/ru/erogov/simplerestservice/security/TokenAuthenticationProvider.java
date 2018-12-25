@@ -14,21 +14,24 @@ import java.util.Optional;
 class TokenAuthenticationProvider extends AbstractUserDetailsAuthenticationProvider {
     private final UserAuthenticationService auth;
 
-    TokenAuthenticationProvider(UserAuthenticationService auth) {
+    TokenAuthenticationProvider(final UserAuthenticationService auth) {
         this.auth = auth;
     }
 
     @Override
-    protected void additionalAuthenticationChecks(UserDetails userDetails, UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken) throws AuthenticationException {
+    protected void additionalAuthenticationChecks(
+            final UserDetails userDetails,
+            final UsernamePasswordAuthenticationToken token) throws AuthenticationException {
     }
 
     @Override
-    protected UserDetails retrieveUser(final String username, final UsernamePasswordAuthenticationToken authentication) throws AuthenticationException {
-        final Object token = authentication.getCredentials();
+    protected UserDetails retrieveUser(final String username,
+                                       final UsernamePasswordAuthenticationToken auth) throws AuthenticationException {
+        final Object token = auth.getCredentials();
         return Optional
                 .ofNullable(token)
                 .map(String::valueOf)
-                .flatMap(auth::findByToken)
+                .flatMap(this.auth::findByToken)
                 .orElseThrow(()-> new UsernameNotFoundException("Cannot find user with auth-token=" + token));
     }
 }
